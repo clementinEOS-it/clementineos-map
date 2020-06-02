@@ -1,0 +1,35 @@
+<% include include/head.ejs %>
+
+<body>
+  <!-- Begin page content -->
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
+      
+        <h1 class="mt-5"><% title %></h1>
+
+        <p class="lead">
+            <h3>Confini territoriali <span class="badge badge-secondary">GET</span></h3>      
+            <span class="badge badge-info">geojson</span>
+            <pre>
+
+            <code>
+
+            GET /v1/geojson/:state
+        
+              - :state='italy'
+              - :state='italy_prov'
+              - :state='italy_city'
+
+            </code>
+            </pre>
+        </p>
+
+    </div>
+  </main>
+
+  <% include include/footer.ejs %>
+  <% include include/scripts.ejs %>
+  <% include include/google_analytics.ejs %>
+
+  </body>
+</html>
