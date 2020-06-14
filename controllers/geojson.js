@@ -49,9 +49,16 @@ let get_map = (state) => {
     
     return geojson;
 
-}
+};
+
+let filterByCity = (map, filters) => {
+    return _.filter(map.features, item => {
+        return _.includes(filters, item.properties.nome_com);
+    });
+};
 
 module.exports = {
     get_geoJSON,
-    get_map
-}
+    get_map,
+    filterByCity
+};

@@ -11,11 +11,13 @@ const axios         = require('axios');
 
 // Routes
 var indexRouter = require('./routes/index');
+var geoRouter = require('./routes/geojson');
 
 require('dotenv').config();
 
 // --------------------------------------------
 var app = express();
+console.info('---------------\n**** Started ' + process.env.TITLE + ' on port ' + process.env.PORT);
 
 // --------------------------------------------
 // view engine setup
@@ -50,6 +52,7 @@ app.use(cors());
 // --------------------------------------------
 // API ver.1.0 Endpoints
 app.use('/', indexRouter);
+app.use('/map/', geoRouter);
 
 // --------------------------------------------
 // catch 404 and forward to error handler
