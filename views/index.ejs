@@ -14,7 +14,7 @@
 
             <code>
 
-            GET /v1/geojson/:state
+            GET /map/:state
         
               - :state='italy'
               - :state='italy_prov'
@@ -23,6 +23,23 @@
             </code>
             </pre>
         </p>
+
+        <p class="lead">
+          <h3>Comuni italiani <span class="badge badge-secondary">POST</span></h3>      
+          <span class="badge badge-info">geojson</span>
+          <pre>
+
+          <code>
+
+          POST /map/IT/city
+            
+            {
+              filters: ['Milano', 'Torino']
+            }
+
+          </code>
+          </pre>
+      </p>
 
     </div>
   </main>
