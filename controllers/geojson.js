@@ -46,8 +46,42 @@ let get_map = (state) => {
     };
 
     let geojson = JSON.parse(fs.readFileSync(geojson_file));
+
+    var response = {
+        "type": "FeatureCollection", 
+        "features": []
+    };
+
+    var features = _.map(geojson.features, feature => {
+        
+        var p = {
+            api: null,
+            data: null
+        };
+
+        p.data = feature.properties;
+
+        return {
+            type: feature.type,
+            properties: p,
+            geometry: feature.geometry
+        }
+    });
+
+    response.features = features;
+
+    /*
+
+    { 
+        "type": "Feature", 
+        "properties": { "NOME_REG": "Piemonte" }, 
+        "geometry": { "type": "MultiPolygon", 
+        "coordinates": []
+    }
+
+    */
     
-    return geojson;
+    return response;
 
 };
 
