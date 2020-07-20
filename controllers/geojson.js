@@ -30,11 +30,13 @@ let get_geoJSON = (data) => {
 let get_map = (state) => {
 
     var geojson_file;
+    var title = '';
 
     const fs = require('fs')
     
     if (state == "italy") {
         geojson_file = './geojson/italy.geojson';
+        title = 'NOME_REG';
     };
 
     if (state == "italy_prov") {
@@ -56,10 +58,12 @@ let get_map = (state) => {
         
         var p = {
             api: null,
+            title: '',
             data: null
         };
 
         p.data = feature.properties;
+        p.title = feature.properties[title];
 
         return {
             type: feature.type,
