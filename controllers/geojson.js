@@ -1,6 +1,23 @@
 require('dotenv').config();
 const _ = require('lodash');
 
+const Nominatim = require('nominatim-geocoder');
+const geocoder = new Nominatim({}, {
+    format: 'json',
+    limit: 1,
+});
+
+let getGeoCoder = (city, callback) => {
+
+    geocoder.search( { 
+        q: city 
+    }).then(r => {
+        callback(false, r);
+    }).catch((error) => {
+        callback(true, {});
+    });
+};
+
 let get_geoJSON = (data) => {
 
     var _g = {
@@ -98,5 +115,6 @@ let filterByCity = (map, filters) => {
 module.exports = {
     get_geoJSON,
     get_map,
-    filterByCity
+    filterByCity,
+    getGeoCoder
 };

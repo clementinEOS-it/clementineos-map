@@ -7,11 +7,20 @@ var map;
 
 router.param('state', function (req, res, next, state) {
     map = geoJSONController.get_map(state);
+
     next();
-})
+});
 
 router.get('/:state', (req, res, next) => {
     res.jsonp(map);
+});
+
+router.get('/geocoder/:city', (req, res, next) => {
+    console.log('City: ' + req.params.city);
+    geoJSONController.getGeoCoder(req.params.city, (err, response) => {
+        res.jsonp(response);
+    });
+    
 });
 
 router.post('/IT/city', (req, res, next) => {
